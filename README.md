@@ -22,16 +22,16 @@ So you can customize your own support.
 
 Usage:
 
-FrameSequence frameSequence = FrameSequence.decodeStream(rawImageStream);
-FrameSequenceDrawable drawable = new FrameSequenceDrawable(frameSequence);
-drawable.setLoopCount(1);
-drawable.setLoopBehavior(LOOP_FINITE);
-drawable.setOnFinishedListener(new FrameSequenceDrawable.OnFinishedListener() {
-    @Override
-    public void onFinished(FrameSequenceDrawable frameSequenceDrawable) {
-        //do what you need.
-    }
-});
+    FrameSequence frameSequence = FrameSequence.decodeStream(rawImageStream);
+    FrameSequenceDrawable drawable = new FrameSequenceDrawable(frameSequence);
+    drawable.setLoopCount(1);
+    drawable.setLoopBehavior(LOOP_FINITE);
+    drawable.setOnFinishedListener(new FrameSequenceDrawable.OnFinishedListener() {
+        @Override
+        public void onFinished(FrameSequenceDrawable frameSequenceDrawable) {
+            //do what you need.
+        }
+    });
 
 
 
