@@ -19,7 +19,7 @@
 
 #include <jni.h>
 
-#define METHOD_COUNT(methodArray) (sizeof(methodArray) / sizeof((methodArray)[0]))
+#define METHOD_COUNT(methodArray) (methodArray == NULL ? 0 : sizeof(methodArray) / sizeof((methodArray)[0]))
 
 #define ILLEGAL_STATE_EXEPTION "java/lang/IllegalStateException"
 

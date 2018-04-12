@@ -48,4 +48,9 @@ tasks.withType(JavaCompile) {
 task cleanExtra(type: Delete) {
     delete 'src/main/obj'
 }
+task cleanLib(type: Delete) {
+    delete 'src/main/libs'
+}
+
 clean.dependsOn(cleanExtra)
+clean.dependsOn(cleanLib)

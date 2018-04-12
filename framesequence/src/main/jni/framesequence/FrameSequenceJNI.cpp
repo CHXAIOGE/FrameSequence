@@ -23,9 +23,10 @@
 
 #define JNI_PACKAGE "android/support/rastermill"
 
+//global reference
 static struct {
-    jclass clazz;
-    jmethodID ctor;
+    jclass clazz;   //FrameSequence class
+    jmethodID ctor; //default constructor
 } gFrameSequenceClassInfo;
 
 ////////////////////////////////////////////////////////////////////////////////
