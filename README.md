@@ -7,7 +7,7 @@ link below . you can also download the code and write makefile yourself that's q
 
 https://developers.google.com/speed/webp/
 
-Build this project yourself.
+Build this project yourself or you can simply download aar in 'package' directory
 
 Well, I do not make it a release version. It's not the code wrote myself actually -_-|||.
 
@@ -19,15 +19,18 @@ It Use registery to register libs you need. No dependency or prefabs included.
 
 So you can customize your own support.
 
+CustomModify:
+
+
+
 
 Usage:
 
     [check support]
     
-      FrameSequenceHelper.isSupported(rawImageStream);
+    FrameSequenceHelper.isSupported(rawImageStream);
+    FrameSequenceHelper.isSupported(file);
       
-      FrameSequenceHelper.isSupported(file);
-    
     FrameSequence frameSequence = FrameSequence.decodeStream(rawImageStream);
     FrameSequenceDrawable drawable = new FrameSequenceDrawable(frameSequence);
     drawable.setLoopCount(1);
