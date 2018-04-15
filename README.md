@@ -21,8 +21,30 @@ So you can customize your own support.
 
 CustomModify:
 
+You can change the 'BUILD_MODE' tag and 'NENO_ACTIVATE' tag to build aar you need
+# 编译模式:
+BUILD_MODE := LITE_MODE
+# NENO指令优化宏:(默认开启)
+NENO_ACTIVATE = true
 
+# 这个编译选项专门为arm定制，需要使用x86和x64的使用[ALL_MODE] 模式编译
+#   ALL_MODE     -- 编译除（mips64 armeabi mips） 外的所有lib
+#       requirements:
+#           [APP_PLATFORM android-15]
+#           [ndk under r16]
 
+#   LITE_MODE    -- （仅编译armv7 忽略64-v8）将使aar整体减小约100k arm64上性能有损失 [APP_PLATFORM android-15]
+#       requirements:
+#           [APP_PLATFORM android-15]
+
+#   BASE_MODE    -- （编译armv7 arm64-v8a）默认模式 [APP_PLATFORM android-15]
+#       requirements:
+#           [APP_PLATFORM android-15]
+
+#   COMPAT_MODE  -- 兼容模式 兼容老版本armv4, v5 最低支持到android-8 使用这个可以获得最小包体积, 但是性能上有损失
+#       requirements:
+#           [APP_PLATFORM android-15]
+#           [ndk under r16]
 
 Usage:
 
