@@ -22,12 +22,15 @@ So you can customize your own support.
 CustomModify:
 
 You can change the 'BUILD_MODE' tag and 'NENO_ACTIVATE' tag to build aar you need
-编译模式:
-BUILD_MODE := LITE_MODE
-NENO指令优化宏:(默认开启)
-NENO_ACTIVATE = true
 
-这个编译选项专门为arm定制，需要使用x86和x64的使用ALL_MODE 模式编译
+
+编译模式:
+
+BUILD_MODE := LITE_MODE
+
+NENO指令优化宏:(默认开启)
+
+NENO_ACTIVATE = true
 
 ALL_MODE     -- 编译除（mips64 armeabi mips） 外的所有lib
   requirements:
