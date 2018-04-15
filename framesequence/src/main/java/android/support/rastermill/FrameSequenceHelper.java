@@ -2,8 +2,10 @@ package android.support.rastermill;
 
 import android.support.annotation.NonNull;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -22,7 +24,9 @@ public class FrameSequenceHelper {
         }
 
         InputStream inputStream = istreamFromFile(file);
-        return isSupported(inputStream);
+        boolean isSupport =  isSupported(inputStream);
+        closeQuietly(inputStream);
+        return isSupport;
     }
 
     public static boolean isSupported(@NonNull InputStream inputStream) throws Exception {
@@ -38,4 +42,17 @@ public class FrameSequenceHelper {
         return null;
     }
 
+    private static void closeQuietly(InputStream input) {
+        closeQuietly((Closeable) input);
+    }
+
+    private static void closeQuietly(Closeable closeable) {
+        try {
+            if (closeable != null) {
+                closeable.close();
+            }
+        } catch (IOException ioe) {
+            // ignore
+        }
+    }
 }
