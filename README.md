@@ -26,38 +26,33 @@ You can change the 'BUILD_MODE' tag and 'NENO_ACTIVATE' tag to build aar you nee
 
 编译模式:
 
-BUILD_MODE := LITE_MODE
+    BUILD_MODE := LITE_MODE
 
 NENO指令优化宏:(默认开启)
 
-NENO_ACTIVATE = true
+    NENO_ACTIVATE = true
 
 ALL_MODE     -- 编译除（mips64 armeabi mips） 外的所有lib
-  requirements:
-  
-   APP_PLATFORM android-15
-   
-   ndk under r16
+
+    requirements:
+      APP_PLATFORM android-15
+      ndk under r16
 
 LITE_MODE    -- （仅编译armv7 忽略64-v8）将使aar整体减小约100k arm64上性能有损失
 
-  requirements:
-  
-   APP_PLATFORM android-15
+    requirements:
+      APP_PLATFORM android-15
 
 BASE_MODE    -- （编译armv7 arm64-v8a）默认模式
 
-  requirements:
-  
-   APP_PLATFORM android-15
+    requirements:
+      APP_PLATFORM android-15
 
 COMPAT_MODE  -- 兼容模式 兼容老版本armv4, v5 最低支持到android-8 使用这个可以获得最小包体积, 但是性能上有损失
 
-  requirements:
-  
-   APP_PLATFORM android-15
-   
-   ndk under r16
+    requirements:
+      APP_PLATFORM android-15
+      ndk under r16
 
 Usage:
 
