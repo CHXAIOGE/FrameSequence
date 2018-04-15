@@ -24,6 +24,7 @@ Usage:
 
     [check support]
     FrameSequenceHelper.isSupported(rawImageStream);
+    
     FrameSequenceHelper.isSupported(file);
     
     FrameSequence frameSequence = FrameSequence.decodeStream(rawImageStream);
