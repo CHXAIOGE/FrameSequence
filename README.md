@@ -23,7 +23,9 @@ So you can customize your own support.
 Usage:
 
     [check support]
+    
       FrameSequenceHelper.isSupported(rawImageStream);
+      
       FrameSequenceHelper.isSupported(file);
     
     FrameSequence frameSequence = FrameSequence.decodeStream(rawImageStream);
