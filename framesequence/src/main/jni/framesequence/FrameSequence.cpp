@@ -33,3 +33,26 @@ FrameSequence* FrameSequence::create(Stream* stream) {
 
     return frameSequence;
 }
+
+bool FrameSequence::isSupport(Stream* stream) {
+    bool isSupport = false;
+
+    const RegistryEntry* entry = Registry::Find(stream);
+
+    if (!entry) return isSupport;
+
+    //有需要检查内容的自行打开
+    //skip content check
+    /*
+    FrameSequence* frameSequence = entry->createFrameSequence(stream);
+    if (!frameSequence->getFrameCount() ||
+            !frameSequence->getWidth() || !frameSequence->getHeight()) {
+        return isSupport;
+    }
+
+    delete frameSequence;
+    */
+
+    isSupport = true;
+    return isSupport;
+}

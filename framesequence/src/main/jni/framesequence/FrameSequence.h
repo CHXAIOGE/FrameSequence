@@ -42,6 +42,7 @@ public:
      * Type determined by header information in the stream
      */
     static FrameSequence* create(Stream* stream);
+    static bool isSupport(Stream* stream);
 
     virtual ~FrameSequence() {}
     virtual int getWidth() const = 0;

@@ -98,6 +98,12 @@ static jlong nativeCreateState(JNIEnv* env, jobject clazz, jlong frameSequenceLo
     return reinterpret_cast<jlong>(state);
 }
 
+static jboolean nativeIsSupport(JNIEnv* env, jobject clazz,
+        jobject istream, jbyteArray byteArray) {
+    JavaInputStream stream(env, istream, byteArray);
+    return FrameSequence::isSupport(&stream);
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Frame sequence state
 ////////////////////////////////////////////////////////////////////////////////
@@ -171,6 +177,11 @@ static JNINativeMethod gMethods[] = {
         "(J)V",
         (void*) nativeDestroyState
     },
+    {
+        "nativeIsSupport",
+        "(Ljava/io/InputStream;[B)Z",
+        (void*) nativeIsSupport
+    }
 };
 
 jint FrameSequence_OnLoad(JNIEnv* env) {

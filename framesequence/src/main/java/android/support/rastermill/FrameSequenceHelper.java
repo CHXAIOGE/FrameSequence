@@ -12,7 +12,7 @@ import java.io.InputStream;
 
 public class FrameSequenceHelper {
 
-    public static boolean isSupported(@NonNull File file) {
+    public static boolean isSupported(@NonNull File file) throws Exception {
         if (!file.exists()) {
             return false;
         }
@@ -22,28 +22,11 @@ public class FrameSequenceHelper {
         }
 
         InputStream inputStream = istreamFromFile(file);
-        return inputStream != null && isSupported(inputStream);
+        return isSupported(inputStream);
     }
 
-    public static boolean isSupported(@NonNull InputStream inputStream) {
-        FrameSequence frameSequence = null;
-        try {
-            frameSequence = FrameSequence.decodeStream(inputStream);
-        } catch (Exception ignore) {
-
-        }
-
-        if(frameSequence == null) {
-            return false;
-        }
-
-        int frameCount = 0;
-        try {
-            frameCount = frameSequence.getFrameCount();
-        } catch (Throwable ignore) {
-
-        }
-        return frameCount > 0;
+    public static boolean isSupported(@NonNull InputStream inputStream) throws Exception {
+        return FrameSequence.isSupport(inputStream);
     }
 
     private static InputStream istreamFromFile(File f) {

@@ -17,6 +17,8 @@
 package android.support.rastermill;
 
 import android.graphics.Bitmap;
+
+import java.io.IOException;
 import java.nio.ByteBuffer;
 
 import java.io.InputStream;
@@ -47,6 +49,7 @@ public class FrameSequence {
     private static native void nativeDestroyState(long nativeState);
     private static native long nativeGetFrame(long nativeState, int frameNr,
             Bitmap output, int previousFrameNr);
+    private static native boolean nativeIsSupport(InputStream is, byte[] tempStorage);
 
     @SuppressWarnings("unused") // called by native
     private FrameSequence(long nativeFrameSequence, int width, int height,
@@ -88,6 +91,35 @@ public class FrameSequence {
         if (stream == null) throw new IllegalArgumentException();
         byte[] tempStorage = new byte[16 * 1024]; // TODO: use buffer pool
         return nativeDecodeStream(stream, tempStorage);
+    }
+
+    public static boolean isSupport(InputStream stream) throws Exception {
+        if (stream == null) throw new IllegalArgumentException();
+        byte[] tempStorage = new byte[16 * 1024]; // TODO: use buffer pool
+
+        boolean isSupport = nativeIsSupport(stream, tempStorage);
+        try {
+            stream.reset();
+        } catch (IOException e) {
+            throw e;
+        }
+        return isSupport;
+    }
+
+    public static boolean isSupport(InputStream stream, boolean resetStream) throws Exception {
+        if (stream == null) throw new IllegalArgumentException();
+        byte[] tempStorage = new byte[16 * 1024]; // TODO: use buffer pool
+
+        boolean isSupport = nativeIsSupport(stream, tempStorage);
+
+        if(resetStream) {
+            try {
+                stream.reset();
+            } catch (IOException e) {
+                throw e;
+            }
+        }
+        return isSupport;
     }
 
     State createState() {
