@@ -17,17 +17,17 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
-FRAMESEQUENCE_INCLUDE_WEBP:=true
+
 
 ## Main library
 
-LOCAL_STATIC_LIBRARIES = gif
+LOCAL_STATIC_LIBRARIES := gif
 
 LOCAL_LDFLAGS := -llog -ljnigraphics
 
 LOCAL_C_INCLUDES := \
     $(LOCAL_PATH)/../gif/ \
-
+    $(LOCAL_PATH)/streams
 
 LOCAL_MODULE    := libframesequence
 LOCAL_SRC_FILES := \
@@ -37,7 +37,7 @@ LOCAL_SRC_FILES := \
 	FrameSequence_gif.cpp \
 	JNIHelpers.cpp \
 	Registry.cpp \
-	Stream.cpp
+    ./streams/Stream.cpp
 
 ifeq ($(FRAMESEQUENCE_INCLUDE_WEBP),true)
 	LOCAL_C_INCLUDES += $(LOCAL_PATH)/../webp/src

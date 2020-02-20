@@ -17,18 +17,23 @@
 #define LOG_TAG "Stream"
 
 #include "Stream.h"
-
 #include <string.h>
 
-#include "JNIHelpers.h"
-#include "utils/log.h"
-#include "utils/math.h"
+#include "../JNIHelpers.h"
+#include "../utils/log.h"
+#include "../utils/math.h"
 
+/**
+ * 缓存java InputStream 的read和reset methodID
+ * */
 static struct {
     jmethodID read;
     jmethodID reset;
 } gInputStreamClassInfo;
 
+/*
+ * 构造函数初始化成员列表
+ * */
 Stream::Stream()
     : mPeekBuffer(0)
     , mPeekSize(0)

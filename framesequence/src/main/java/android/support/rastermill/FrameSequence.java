@@ -98,11 +98,11 @@ public class FrameSequence {
         byte[] tempStorage = new byte[16 * 1024]; // TODO: use buffer pool
 
         boolean isSupport = nativeIsSupport(stream, tempStorage);
-        try {
-            stream.reset();
-        } catch (IOException e) {
-            throw e;
-        }
+//        try {
+//            stream.reset();
+//        } catch (IOException e) {
+//            throw e;
+//        }
         return isSupport;
     }
 
@@ -111,14 +111,13 @@ public class FrameSequence {
         byte[] tempStorage = new byte[16 * 1024]; // TODO: use buffer pool
 
         boolean isSupport = nativeIsSupport(stream, tempStorage);
-
-        if(resetStream) {
-            try {
-                stream.reset();
-            } catch (IOException e) {
-                throw e;
-            }
-        }
+//        if(resetStream) {
+//            try {
+//                stream.reset();
+//            } catch (IOException e) {
+//                throw e;
+//            }
+//        }
         return isSupport;
     }
 

@@ -84,9 +84,9 @@ protected:
 
 private:
     JNIEnv* mEnv;
-    const jobject mInputStream;
-    const jbyteArray mByteArray;
-    const size_t mByteArrayLength;
+    const jobject mInputStream;     //java inputStream
+    const jbyteArray mByteArray;    //java 层提供缓冲buffer recommended 16K
+    const size_t mByteArrayLength;  //缓冲区buffer长度
 };
 
 jint JavaStream_OnLoad(JNIEnv* env);

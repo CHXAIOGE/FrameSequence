@@ -27,10 +27,17 @@
 # instructions to be generated for armv7a code. Instead target the neon code
 # specifically.
 
+# ================我是编译选项的分割线=========================
 # 编译模式:
-BUILD_MODE := LITE_MODE
+BUILD_MODE := BASE_MODE
+
 # NENO指令优化宏:(默认开启)
 NENO_ACTIVATE = true
+
+# webp 编译宏 默认开启[不开启也需要编译，gif支持需要，只是不会编译webp的Registry相关代码]
+FRAMESEQUENCE_INCLUDE_WEBP := true
+# ==========================================================
+
 
 ifeq ($(NENO_ACTIVATE), true)
     LOCAL_ARM_NEON = true
@@ -58,6 +65,7 @@ ifeq ($(BUILD_MODE), COMPAT_MODE)
     APP_ABI := armeabi
     APP_PLATFORM := android-8
 endif
+
 
 
 

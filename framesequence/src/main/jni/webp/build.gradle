@@ -1,9 +1,11 @@
 // Define dependencies.
 buildscript {
   repositories {
+    google()
     maven {
       url "https://jcenter.bintray.com"
     }
+
   }
   dependencies {
     classpath "com.android.tools.build:gradle:${ANDROID_GRADLE_PLUGIN_VERSION}"

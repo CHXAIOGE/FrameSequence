@@ -28,9 +28,30 @@ public class FrameSequenceHelper {
         closeQuietly(inputStream);
         return isSupport;
     }
+//
+//    public static boolean isSupported(@NonNull InputStream inputStream) throws Exception {
+//        return FrameSequence.isSupport(inputStream);
+//    }
 
-    public static boolean isSupported(@NonNull InputStream inputStream) throws Exception {
-        return FrameSequence.isSupport(inputStream);
+    public static boolean isSupported(@NonNull InputStream inputStream) {
+        FrameSequence frameSequence = null;
+        try {
+            frameSequence = FrameSequence.decodeStream(inputStream);
+        } catch (Exception ignore) {
+
+        }
+
+        if(frameSequence == null) {
+            return false;
+        }
+
+        int frameCount = 0;
+        try {
+            frameCount = frameSequence.getFrameCount();
+        } catch (Throwable ignore) {
+
+        }
+        return frameCount > 0;
     }
 
     private static InputStream istreamFromFile(File f) {
