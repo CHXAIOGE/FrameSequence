@@ -34,8 +34,8 @@ You can change the 'BUILD_MODE' tag and 'NENO_ACTIVATE' tag to build aar you nee
           APP_PLATFORM android-15
     COMPAT_MODE  -- 兼容模式 兼容老版本armv4, v5 最低支持到android-8 使用这个可以获得最小包体积, 但是性能上有损失
         requirements:
-          APP_PLATFORM android-8
-          ndk under r16
+          APP_PLATFORM android-8
+          ndk under r16
 
 Usage:
 
